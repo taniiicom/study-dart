@@ -17,7 +17,8 @@ import "dart:io"; // ユーザからの入力 ライブラリ
 void main() {
   // printing();
   // inout();
-  type_conv();
+  // type_conv();
+  constant();
 }
 
 // f: 変数とプリント
@@ -52,7 +53,7 @@ void type_conv() {
   assert(one == 1);
 
   // String -> double
-  var one_point_one = int.parse("1.1");
+  var one_point_one = double.parse("1.1");
   assert(one_point_one == 1.1);
 
   // メソッドver.
@@ -64,8 +65,21 @@ void type_conv() {
 
   // double -> String
   // ^^ こんなこともできちゃう!
-  String pi_str = 3.14159.toStringAsFixed(2); // 小数点以下指定
+  String pi_str = 3.14159.toStringAsFixed(2); // 小数点以下指定桁数(四捨五入)
   assert(pi_str == "3.14");
+}
 
-  //
+// f: 定数
+void constant() {
+  const int a_const_num = 0;
+  const bool a_const_bool = true;
+  const String a_const_str = "Hello World";
+
+  print(a_const_num);
+  print(a_const_bool);
+  print(a_const_str);
+
+  print(a_const_num.runtimeType);
+  print(a_const_bool.runtimeType);
+  print(a_const_str.runtimeType);
 }
