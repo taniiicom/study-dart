@@ -18,7 +18,12 @@ void main() {
   // printing();
   // inout();
   // type_conv();
-  constant();
+  // constant();
+  // nullaware();
+  // ternary_ope();
+  // type_test();
+  // if_elseif_else();
+  switching();
 }
 
 // f: 変数とプリント
@@ -83,3 +88,102 @@ void constant() {
   print(a_const_bool.runtimeType);
   print(a_const_str.runtimeType);
 }
+
+// f: 演算子
+/*
+＊一般的な演算子が利用可能
+- (+ - * / %)
+- (== != >= <=) relational
+- (+= -= *= /=)
+- (++var var++) unary operator
+- (&& ||) logical operator
+*/
+/*
+＊モダンな演算子! ^^
+- (?. ?? ??=) null aware operator
+  cf. swift, kotlin などに存在
+*/
+class Num {
+  int num = 10;
+}
+
+// f: Null Aware Operator
+// nullaware:
+// もし, オブジェクト自体が存在しなかった場合,
+// オブジェクト自体の参照に対しては null が返却されるが,
+// オブジェクト.属性 などは, エラーになる!
+// それを回避する機構が, nullaware! ^^
+void nullaware() {
+  var inst = Num(); // Dart ではインスタンス生成はこれで OK ( Python と同じ)
+  // ! number には, nullaware によって, null が代入される場合があるので,
+  // int? にしないといけない! ^^
+  int? number;
+
+  // ~ legacy
+  if (inst != null) {
+    number = inst.num;
+  }
+  // ~
+
+  // ~ modern
+  number = inst?.num;
+  // ~
+
+  // cf. null の代わりに, default 値を代入する
+  number = inst?.num ?? 0;
+
+  // cf. null の場合に, 代入 -> 返却
+  int? number2;
+  print(number2 ??= 2434);
+  print(number2);
+}
+
+// f: 三項演算子
+// PHP に近い書き方 ^^
+void ternary_ope() {
+  int x = 100;
+  var res = x % 2 == 0 ? "even" : "odd";
+  print(res);
+}
+
+// f: Type Test
+void type_test() {
+  var x = 100;
+
+  // is: 型をチェック
+  if (x is int) {
+    print("int");
+  }
+}
+
+// f: if elseif else
+// else if と書く!
+void if_elseif_else() {
+  var x = 100;
+
+  if (x is int) {
+    print("int");
+  } else if (x is double) {
+    print("double");
+  } else {
+    print("not a number");
+  }
+}
+
+// f: switch 文
+void switching() {
+  int i = 0;
+
+  switch (i) {
+    case 0:
+      print("int");
+      break; // 忘れない!
+    case 1:
+      print("double");
+      break; // 忘れない!
+    default:
+      print("not a number");
+  }
+}
+
+// 
