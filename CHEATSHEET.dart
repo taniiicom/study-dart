@@ -1,4 +1,8 @@
 /*
+  Dart インストール環境で, 
+  dart [ファイル名] で実行可能
+*/
+/*
   ＊静的型: あとから, 型変更できない. 
   ex. dynamic型は例外
 */
@@ -11,25 +15,34 @@
 // import
 // dart:core
 import "dart:core"; // 省略可. これは自動でimportされる.
-import "dart:io"; // ユーザからの入力 ライブラリ
+import "dart:io"; // 標準入出力ライブラリ (ユーザからの入力)
 
 // void: 戻り値なし
 void main() {
   // printing();
   // inout();
+
   // type_conv();
   // constant();
+
   // nullaware();
   // ternary_ope();
   // type_test();
+
   // if_elseif_else();
-  switching();
+  // switching();
+
+  // for_loop();
+  // foreach_loop();
+  // while_loop();
+  loop_break();
 }
 
 // f: 変数とプリント
 /*
   ＊変数型一覧
   int double String bool
+  list set map
   dynamic: 可変
   ex. var: 明示的に定義しない
 */
@@ -186,4 +199,57 @@ void switching() {
   }
 }
 
-// 
+// f: Loop/for
+void for_loop() {
+  // for 系
+  // C, Java, PHP などと同じ
+  for (var i = 1; i <= 10; ++i) {
+    print(i);
+  }
+
+  // foreach 系
+  // Python と同じ
+  var nums = [0, 1, 2];
+  for (var num in nums) {
+    print(num);
+  }
+}
+
+// f: Loop/forEach
+void foreach_loop() {
+  var nums = [0, 1, 2];
+
+  nums.forEach((num) => print(num));
+}
+
+// f: Loop/while
+void while_loop() {
+  int count = 5;
+
+  while (count > 0) {
+    print(count);
+    count -= 1;
+  }
+
+  count = 5; // reset
+
+  // repeat - untill 系
+  // 動作後に判定なので,
+  // 空走距離が発生することに注意! ^^
+  do {
+    print(count);
+    count -= 1;
+  } while (count > 0); // 「;」忘れない!
+}
+
+// f: Loop/break, continue
+void loop_break() {
+  for (var i = 0; i < 10; ++i) {
+    if (i > 5) break;
+    if (i % 2 == 0) continue;
+    print(i);
+  }
+}
+
+//
+void list_set_map() {}
